@@ -1,19 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tulisan kulikan</title>
+    <title>Daftar Tulisan Saya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-<body>
-<h1>selamat datang, senang bertemu denganmu </h1>
-        <ul>
-            <li> <a href="https://fire-hugger-52b.notion.site/Seni-Menemukan-Kesepakatan-Panduan-untuk-Jiwa-Jiwa-Muda-yang-Penuh-Pemikiran-79e4da945dbc48bca3b9b09d19bc5893">seni menemukan kesepakatan</li></a>
+    <div 
+        x-data="{
+            daftarTulisan: [
+                { 
+                    judul: 'Aku, kamu, dan KRL', 
+                    link: 'https://fire-hugger-52b.notion.site/Aku-kamu-dan-KRL-20ac97dcea3c80d4812ed99c6f6db0fd' 
+                },
+              
+            ]
+        }"
+        class="w-full max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8"
+    >
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">tulisan iseng</h1>
+        <p class="text-gray-500 mb-6">Karena iseng pasti banyak, aku pamerin yang menurutku bagus</p>
+        
+        
+        <ul class="space-y-3">
+            <template x-for="(tulisan, index) in daftarTulisan" :key="index">
+                <li>
+                    <a  :href="tulisan.link" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="flex items-center p-4 border rounded-lg hover:bg-blue-50 hover:border-blue-300 hover:shadow-sm transition-all duration-200"
+                    >
+                        <span class="text-lg font-semibold text-blue-600 mr-4" x-text="index + 1 + '.'"></span>
+                        <span class="text-gray-800 font-medium" x-text="tulisan.judul"></span>
+                    </a>
+                </li>
+            </template>
         </ul>
+
     </div>
 
 </body>
-
 </html>
